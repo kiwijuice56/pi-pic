@@ -38,13 +38,15 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    if "clear" in message.content or "Clear" in message.content:
+    if "update" in message.content or "Update" in message.content:
+        pass
+    elif "clear" in message.content or "Clear" in message.content:
         delete_images()
-        return
-    for attachment in message.attachments:
-        print("Image downloading...")
-        await attachment.save(os.path.join(DIR, "img", attachment.filename))
-        print("Image downloaded!")
+    else:
+        for attachment in message.attachments:
+            print("Image downloading...")
+            await attachment.save(os.path.join(DIR, "img", attachment.filename))
+            print("Image downloaded!")
     load_images()
     await bot.change_presence(activity=discord.Game(name=(str(len(images)) + " images")))
 
