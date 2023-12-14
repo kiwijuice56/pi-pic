@@ -37,11 +37,19 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
+    if "clear" in message.content or "Clear" in message.content:
+        delete_images()
+        return
     for attachment in message.attachments:
         print("Image downloading...")
         await attachment.save(os.path.join(DIR, "img", attachment.filename))
         print("Image downloaded!")
     load_images()
+
+
+def delete_images():
+    for file in os.listdir(os.path.join(DIR, "img")):
+        os.unlink(os.path.join(DIR, "img", file))
 
 
 def load_images():
@@ -55,7 +63,7 @@ def update_screen():
     load_images()
     print("Refreshing screen...")
     if len(images) == 0:
-        print("No images to show")
+        print("No images to show.")
         return    
     inky.set_image(random.choice(images), saturation=0.5)
     inky.show()
