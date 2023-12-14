@@ -47,7 +47,7 @@ async def on_message(message):
 def load_images():
     images.clear()
     for file in os.listdir(os.path.join(DIR, "img")):
-        image = Image.open(os.path.join(DIR, "img", file)).resize(inky.resolution)
+        image = Image.open(os.path.join(DIR, "img", file)).thumbnail(inky.resolution)
         images.append(image)
 
 
