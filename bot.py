@@ -9,7 +9,9 @@ from inky.inky_uc8159 import Inky
 from PIL import Image, ImageDraw
 
 # Required for refreshing screen
-import sched, time, random
+from threading import Thread
+from time import sleep
+import random
 
 # Discord bot parameters
 DIR = os.path.dirname(__file__)
@@ -30,10 +32,7 @@ async def on_ready():
     global channel
     channel = bot.get_channel(CHANNEL_ID)
     print(f"Logged in as {bot.user}")
-    load_images()    
-    main_scheduler = sched.scheduler(time.time, time.sleep)
-    main_scheduler.enter(30, 1, update_screen, (main_scheduler,))
-    main_scheduler.run()
+    load_images()
 
 
 @bot.event
@@ -50,8 +49,7 @@ def load_images():
         image = Image.open(os.path.join(DIR, "img", file)).resize(inky.resolution)
 
 
-def update_screen(scheduler): 
-    scheduler.enter(30, 1, update_screen, (scheduler,))
+def update_screen(): 
     print("Refreshing screen...")
     if len(images) == 0:
         return    
@@ -59,4 +57,10 @@ def update_screen(scheduler):
     inky.show()
     
 
+def update_loop(seconds):
+    sleep(seconds)
+    update_screen()
+
+update_thread = Thread(target=update_loop, args=(60,))
+update_thread.start()
 bot.run(TOKEN)
