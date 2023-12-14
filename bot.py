@@ -76,6 +76,8 @@ def update_loop(seconds):
         update_screen()
         sleep(seconds)
 
+# Uncomment for autostart
+# sleep(10)
 
 update_thread = Thread(target=update_loop, args=(900,))
 update_thread.start()

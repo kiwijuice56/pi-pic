@@ -31,21 +31,23 @@ Insert the following text, replacing the username if necessary:
 ```
 [Unit]
 Description=Start Pi Picture Slideshow
-After=network-online.target
+After=network.target
 
 [Service]
-Type=idle
 ExecStart=/usr/bin/python3 /home/pi/pi-pic/bot.py
-Restart=always
 User=pi
 
 [Install]
-WantedBy=network-online.target
+WantedBy=multi-user.target
 ```
-
-Finally, enable the service using the following:
+Enable the service using the following:
 ```
 sudo systemctl enable pipic.service
+```
+Finally, uncomment the (near) final line of code that adds a small delay to give your Pi time to connect to your internet:
+```
+# Uncomment for autostart
+# sleep(10)
 ```
 
 ## Usage
