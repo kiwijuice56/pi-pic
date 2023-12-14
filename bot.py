@@ -48,8 +48,7 @@ def load_images():
     images.clear()
     for file in os.listdir(os.path.join(DIR, "img")):
         image = Image.open(os.path.join(DIR, "img", file))
-        ImageOps.fit(image, inky.resolution)
-        images.append(image)
+        images.append(ImageOps.fit(image, inky.resolution))
 
 
 def update_screen(): 
