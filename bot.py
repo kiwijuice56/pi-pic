@@ -40,6 +40,7 @@ async def on_message(message):
     for attachment in message.attachments:
         print("Image downloading...")
         await attachment.save(os.path.join(DIR, "img", attachment.filename))
+        print("Image downloaded!")
     load_images()
 
 
