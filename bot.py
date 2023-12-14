@@ -6,7 +6,7 @@ import aiohttp, os
 
 # Required for electronic ink display
 from inky.inky_uc8159 import Inky
-from PIL import Image, ImageDraw
+from PIL import Image, ImageOps
 
 # Required for refreshing screen
 from threading import Thread
@@ -48,7 +48,7 @@ def load_images():
     images.clear()
     for file in os.listdir(os.path.join(DIR, "img")):
         image = Image.open(os.path.join(DIR, "img", file))
-        image.thumbnail(inky.resolution)
+        ImageOps.fit(image, inky.resolution)
         images.append(image)
 
 
