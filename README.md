@@ -23,26 +23,13 @@ sudo git clone https://github.com/kiwijuice56/pi-pic
 sudo python3 pi-pic/bot.py
 ```
 
-5) (Optional) Create a service to start the script whenever the pi is rebooted:
+5) (Optional) To allow the script to start up at boot, edit the file:
 ```
-sudo nano /lib/systemd/system/pipic.service
+sudo nano /etc/rc.local
 ```
-Insert the following text, replacing the username if necessary:
+And add the following line of code right before the exit line:
 ```
-[Unit]
-Description=Start Pi Picture Slideshow
-After=network.target
-
-[Service]
-ExecStart=/usr/bin/python3 /home/pi/pi-pic/bot.py
-User=pi
-
-[Install]
-WantedBy=multi-user.target
-```
-Enable the service using the following:
-```
-sudo systemctl enable pipic.service
+python3 /home/pi/pi-pic/bot.py &
 ```
 Finally, uncomment the (near) final line of code that adds a small delay to give your Pi time to connect to your internet:
 ```
