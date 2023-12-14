@@ -50,6 +50,7 @@ async def on_message(message):
 def delete_images():
     for file in os.listdir(os.path.join(DIR, "img")):
         os.unlink(os.path.join(DIR, "img", file))
+    print("All images deleted.")
 
 
 def load_images():
@@ -75,6 +76,6 @@ def update_loop(seconds):
         sleep(seconds)
 
 
-update_thread = Thread(target=update_loop, args=(60,))
+update_thread = Thread(target=update_loop, args=(900,))
 update_thread.start()
 bot.run(TOKEN)
