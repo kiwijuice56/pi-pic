@@ -52,6 +52,7 @@ def load_images():
 
 
 def update_screen(): 
+    load_images()
     print("Refreshing screen...")
     if len(images) == 0:
         print("No images to show")
