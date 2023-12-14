@@ -49,7 +49,7 @@ async def on_message(message):
 
 def delete_images():
     for file in os.listdir(os.path.join(DIR, "img")):
-        os.unlink(os.path.join(DIR, "img", file))
+        os.remove(os.path.join(DIR, "img", file))
     load_images()
     print("All images deleted.")
 
@@ -59,6 +59,7 @@ def load_images():
     for file in os.listdir(os.path.join(DIR, "img")):
         image = Image.open(os.path.join(DIR, "img", file))
         images.append(ImageOps.fit(image, inky.resolution))
+    await bot.change_presence(activity=discord.Streaming(name=(str(len(images)) + " images")))
 
 
 def update_screen(): 
