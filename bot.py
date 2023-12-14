@@ -20,7 +20,6 @@ TOKEN = open(os.path.join(DIR, "TOKEN.txt"), "r").readline()
 
 # Image initialization
 images = []
-load_images()
 inky = Inky(resolution=(640,400))
 
 
