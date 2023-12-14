@@ -26,7 +26,7 @@ inky = Inky(resolution=(640,400))
 
 # Discord bot initialization
 channel = None
-bot = commands.Bot(command_prefix="%", intents=discord.Intents().all(), activity=discord.Streaming(name=(str(len(images)) + " images")))
+bot = commands.Bot(command_prefix="%", intents=discord.Intents().all(), activity=discord.Streaming(name="plugged in"))
 
 
 @bot.event
