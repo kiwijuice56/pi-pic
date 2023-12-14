@@ -18,13 +18,15 @@ DIR = os.path.dirname(__file__)
 CHANNEL_ID = int(open(os.path.join(DIR, "CHANNEL.txt"), "r").readline())
 TOKEN = open(os.path.join(DIR, "TOKEN.txt"), "r").readline()
 
-# Discord bot initialization
-channel = None
-bot = commands.Bot(command_prefix="%", intents=discord.Intents().all())
-
 # Image initialization
 images = []
+load_images()
 inky = Inky(resolution=(640,400))
+
+
+# Discord bot initialization
+channel = None
+bot = commands.Bot(command_prefix="%", intents=discord.Intents().all(), activity=discord.Streaming(name=(str(len(images)) + " images")))
 
 
 @bot.event
@@ -45,6 +47,7 @@ async def on_message(message):
         await attachment.save(os.path.join(DIR, "img", attachment.filename))
         print("Image downloaded!")
     load_images()
+    await bot.change_presence(activity=discord.Streaming(name=(str(len(images)) + " images")))
 
 
 def delete_images():
@@ -59,7 +62,6 @@ def load_images():
     for file in os.listdir(os.path.join(DIR, "img")):
         image = Image.open(os.path.join(DIR, "img", file))
         images.append(ImageOps.fit(image, inky.resolution))
-    await bot.change_presence(activity=discord.Streaming(name=(str(len(images)) + " images")))
 
 
 def update_screen(): 
