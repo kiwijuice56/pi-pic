@@ -52,14 +52,16 @@ def load_images():
 def update_screen(): 
     print("Refreshing screen...")
     if len(images) == 0:
+        print("No images to show")
         return    
     inky.set_image(random.choice(images), saturation=0.5)
     inky.show()
     
 
 def update_loop(seconds):
-    sleep(seconds)
     update_screen()
+    sleep(seconds)
+
 
 update_thread = Thread(target=update_loop, args=(60,))
 update_thread.start()
