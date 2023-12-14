@@ -30,6 +30,10 @@ async def on_ready():
     global channel
     channel = bot.get_channel(CHANNEL_ID)
     print(f"Logged in as {bot.user}")
+    load_images()    
+    main_scheduler = sched.scheduler(time.time, time.sleep)
+    main_scheduler.enter(30, 1, update_screen, (main_scheduler,))
+    main_scheduler.run()
 
 
 @bot.event
@@ -53,11 +57,6 @@ def update_screen(scheduler):
         return    
     inky.set_image(random.choice(images), saturation=0.5)
     inky.show()
+    
 
-
-load_images()    
 bot.run(TOKEN)
-
-main_scheduler = sched.scheduler(time.time, time.sleep)
-main_scheduler.enter(30, 1, do_something, (my_scheduler,))
-main_scheduler.run()
