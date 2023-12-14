@@ -31,11 +31,11 @@ And add the following line of code right before the exit line:
 ```
 python3 /home/pi/pi-pic/bot.py &
 ```
-Finally, uncomment the (near) final line of code that adds a small delay to give your Pi time to connect to your internet:
+Finally, uncomment the (near) final line of code in `bot.py` that adds a small delay to give your Pi time to connect to your internet:
 ```
 # Uncomment for autostart
 # sleep(10)
 ```
 
 ## Usage
-Send pictures in the selected channel to add them to the slideshow or send the text `clear` to remove all of the pictures. The slideshow will stop if there are no pictures.
+Send pictures in the selected channel to add them to the slideshow or send the text `clear` to remove all of the pictures. The slideshow will stop if there are no pictures. The bot's status will reflect the number of pictures currently in the slideshow. You can also send `update` to refresh this number.
