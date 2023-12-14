@@ -50,6 +50,7 @@ async def on_message(message):
 def delete_images():
     for file in os.listdir(os.path.join(DIR, "img")):
         os.unlink(os.path.join(DIR, "img", file))
+    load_images()
     print("All images deleted.")
 
 
