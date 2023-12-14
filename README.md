@@ -27,7 +27,7 @@ sudo python3 pi-pic/bot.py
 ```
 sudo nano /lib/systemd/system/pipic.service
 ```
-And insert the following text:
+Insert the following text, replacing the username if necessary:
 ```
 
 [Unit]
@@ -38,11 +38,13 @@ After=network-online.target
 Type=idle
 ExecStart=/usr/bin/python3 /home/pi/pi-pic/bot.py
 Restart=always
-User={INSERT USERNAME HERE, USUALLY pi}
+User=pi
 
 [Install]
 WantedBy=network-online.target
 ```
 
+Finally, uncomment the sleep delay line of code near the end of `bot.py` to allow the pi to connect to your wifi network before attempting to connect the bot.
+
 ## Usage
-Send pictures in the selected channel to add them to the slideshow or send the text `clear` to remove all picures.
+Send pictures in the selected channel to add them to the slideshow or send the text `clear` to remove all of the pictures. The slideshow will stop if there are no pictures.
