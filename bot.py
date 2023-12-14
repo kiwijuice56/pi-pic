@@ -62,8 +62,9 @@ def update_screen():
     
 
 def update_loop(seconds):
-    update_screen()
-    sleep(seconds)
+    while True:
+        update_screen()
+        sleep(seconds)
 
 
 update_thread = Thread(target=update_loop, args=(60,))
