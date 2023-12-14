@@ -29,7 +29,6 @@ sudo nano /lib/systemd/system/pipic.service
 ```
 Insert the following text, replacing the username if necessary:
 ```
-
 [Unit]
 Description=Start Pi Picture Slideshow
 After=network-online.target
@@ -44,7 +43,10 @@ User=pi
 WantedBy=network-online.target
 ```
 
-Finally, uncomment the sleep delay line of code near the end of `bot.py` to allow the pi to connect to your wifi network before attempting to connect the bot.
+Finally, enable the service using the following:
+```
+sudo systemctl enable pipic.service
+```
 
 ## Usage
 Send pictures in the selected channel to add them to the slideshow or send the text `clear` to remove all of the pictures. The slideshow will stop if there are no pictures.

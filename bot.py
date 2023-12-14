@@ -79,7 +79,4 @@ def update_loop(seconds):
 
 update_thread = Thread(target=update_loop, args=(900,))
 update_thread.start()
-
-# Uncommment for starting at boot
-# sleep(10)
 bot.run(TOKEN)
