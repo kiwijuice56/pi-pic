@@ -25,7 +25,7 @@ inky = Inky(resolution=(640,400))
 
 # Discord bot initialization
 channel = None
-bot = commands.Bot(command_prefix="%", intents=discord.Intents().all(), activity=discord.Streaming(name="plugged in"))
+bot = commands.Bot(command_prefix="%", intents=discord.Intents().all(), activity=discord.Game(name="plugged in"))
 
 
 @bot.event
@@ -46,7 +46,7 @@ async def on_message(message):
         await attachment.save(os.path.join(DIR, "img", attachment.filename))
         print("Image downloaded!")
     load_images()
-    await bot.change_presence(activity=discord.Streaming(name=(str(len(images)) + " images")))
+    await bot.change_presence(activity=discord.Game(name=(str(len(images)) + " images")))
 
 
 def delete_images():
