@@ -46,7 +46,7 @@ def update_loop(seconds):
 
 
 if login_delay:
-    sleep(8)
+    sleep(16)
 
 update_thread = Thread(target=update_loop, args=(delay_seconds,))
 update_thread.start()
