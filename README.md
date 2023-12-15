@@ -16,7 +16,7 @@ sudo pip3 install pillow
 sudo git clone https://github.com/kiwijuice56/pi-pic
 ```
 
-3) Create a Discord bot and server. In the server, create a single channel where you will interface with the bot. Create two files in the pi-pic directory: `CHANNEL.txt` and `TOKEN.txt` and copy the Discord channel's ID and the bot's token into each file respectively.
+3) Create a Discord bot and server. Create the file `TOKEN.txt` in the pi-pic directory and copy the Discord bot's token into it. 
 
 4) Run the script
 ```
@@ -31,11 +31,13 @@ And add the following line of code right before the exit line:
 ```
 python3 /home/pi/pi-pic/bot.py &
 ```
-Finally, uncomment the (near) final line of code in `bot.py` that adds a small delay to give your Pi time to connect to your internet:
-```
-# Uncomment for autostart
-sleep(10)
+Finally, edit the parameters at the start of `bot.py` to fit your usage
+```python
+delay_seconds = 60 * 25
+picture_saturation = 0.55
+inky_resolution=(640,400) # Check your device specifications
+login_delay = False # Set to True if allowing the program to run at boot
 ```
 
 ## Usage
-Send pictures in the selected channel to add them to the slideshow or send the text `clear` to remove all of the pictures. The slideshow will stop if there are no pictures. The bot's status will reflect the number of pictures currently in the slideshow. You can also send `update` to refresh this number.
+Send pictures in any channel of the server to add them to the slideshow or send the text `clear` to remove all of the pictures. The slideshow will stop if there are no pictures. 
