@@ -1,17 +1,17 @@
 # pi-pic
-Small script to configure my Rasberry Pi 4 Model B with the [Inky Impression 4" (7 colour ePaper/eInk HAT).](https://shop.pimoroni.com/products/inky-impression-4?variant=39599238807635) Utilizes a private Discord server and bot to receive images and cycle through them randomly.
+A script to configure my Rasberry Pi 4 Model B with the [Inky Impression 4" (7 colour ePaper/eInk HAT).](https://shop.pimoroni.com/products/inky-impression-4?variant=39599238807635) Utilizes a private Discord server and bot to receive images and cycle through them randomly.
 
 ![Example image](example.jpeg "Example")
 
 ## Set Up 
 1) After connecting the Pi and Inky, install the following dependencies
 ```
-sudo pip3 install inky
+sudo pip3 install inky[rpi,example-depends]
 sudo pip3 install discord.py
 sudo pip3 install pillow
 ```
 
-2) Clone the repository 
+2) Clone this repository 
 ```
 sudo git clone https://github.com/kiwijuice56/pi-pic
 ```
@@ -34,7 +34,7 @@ python3 /home/pi/pi-pic/bot.py &
 Finally, uncomment the (near) final line of code in `bot.py` that adds a small delay to give your Pi time to connect to your internet:
 ```
 # Uncomment for autostart
-# sleep(10)
+sleep(10)
 ```
 
 ## Usage
