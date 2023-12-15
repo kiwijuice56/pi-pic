@@ -45,7 +45,7 @@ def update_loop(seconds):
         sleep(seconds)
 
 
-if will_autostart:
+if login_delay:
     sleep(8)
 
 update_thread = Thread(target=update_loop, args=(delay_seconds,))
