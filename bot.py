@@ -28,7 +28,7 @@ async def on_message(message):
         await bot.change_presence(activity=discord.Game(name="image(s) deleted :("))
     else:
         for attachment in message.attachments:
-            await attachment.save(os.path.join(DIR, "img", attachment.filename))
+            await attachment.save(os.path.join(program_dir, "img", attachment.filename))
         await bot.change_presence(activity=discord.Game(name="image(s) uploaded :)"))
     
 
