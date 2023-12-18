@@ -34,9 +34,10 @@ python3 /home/pi/pi-pic/bot.py &
 Finally, edit the parameters at the start of `bot.py` to fit your usage
 ```python
 delay_seconds = 60 * 25
-picture_saturation = 0.55
+picture_saturation = 0.50
 inky_resolution=(640,400) # Check your device specifications
-login_delay = False # Set to True if allowing the program to run at boot
+vertical_flip = True
+login_delay = True # Set to True if allowing the program to run at boot
 ```
 
 ## Usage
